@@ -1,0 +1,10 @@
+subscription
+	Form to add email address / enable disable
+graph
+	JPMC stock price
+comments
+	Popup to add / delete comments
+canvas
+	scrolling picture and caption
+static page - content
+	video / article / image / content
