@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- saved from url=(0042)http://getbootstrap.com/examples/carousel/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -10,6 +10,32 @@
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
     <title>Carousel Template for Bootstrap</title>
+    <script type="text/javascript" src="./jpmc-stock/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./jpmc-stock/canvasjs-1.9.8/canvasjs.min.js"></script>
+    
+<!--
+    <script>
+        $(document).ready(function () {
+            var dataPoints = [[1, 10], [2, 9], [3, 4], [4, 9], [5, 4], [6, 4], [7, 8], [8, 13], [9, 11], [10, 10], [11, 8], [12, 10], [13, 11], [14, 10], [15, 7], [16, 10], [17, 5], [18, 8], [19, 6], [20, 10], [21, 15], [22, 11], [23, 12], [24, 12], [25, 14], [26, 19], [27, 14], [28, 17], [29, 15], [30, 18], [31, 15], [32, 18], [33, 15], [34, 12], [35, 14], [36, 12], [37, 14], [38, 15], [39, 12], [40, 17], [41, 22], [42, 22], [43, 24], [44, 25], [45, 30], [46, 34], [47, 33], [48, 28], [49, 29], [50, 31], [51, 35], [52, 36], [53, 39], [54, 39], [55, 34], [56, 33], [57, 32], [58, 28], [59, 24], [60, 27], [61, 32], [62, 31], [63, 31], [64, 28], [65, 29], [66, 26], [67, 26], [68, 23], [69, 27], [70, 30], [71, 27], [72, 31], [73, 29], [74, 33], [75, 32], [76, 30], [77, 33], [78, 36], [79, 34], [80, 33], [81, 33], [82, 30], [83, 35], [84, 32], [85, 35], [86, 30], [87, 32], [88, 29], [89, 25], [90, 29], [91, 34], [92, 29], [93, 26], [94, 26], [95, 24], [96, 28], [97, 31], [98, 35], [99, 30], [100, 31]];
+            // $.getJSON("",
+                function data(key,value) {
+                      dataPoints.push({ x: value[0], y: parseInt(value[1]) });
+                };
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title: {
+                        text: "Rendering Chart with dataPoints from External JSON"
+                    },
+                    data: [{
+                        type: "line",
+                        dataPoints: dataPoints,
+                    }]
+                });
+                chart.render();
+            //);
+        });
+    </script>
+-->
+     <script type="text/javascript" src="./jpmc-stock/jpmc-stock1.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="./Carousel Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +46,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="./Carousel Template for Bootstrap_files/ie-emulation-modes-warning.js.download"></script>
-
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -160,11 +186,14 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">JPMC Stock Comparision <span class="text-muted"><br />It'll blow your mind.</span></h2>
+          <p class="lead">JPMC stock against other banks.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzUwMHg1MDAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1YzM1ZmEzMGUwIHRleHQgeyBmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTVjMzVmYTMwZTAiPjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTg1LjEyNSIgeT0iMjYxLjEiPjUwMHg1MDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true">
+<!--
+            <div id="chartContainer" style="border: 1px solid red; height: 300px; width:100%;"> </div>
+-->            
+            <div id="chartContainer1" style="height: 300px; width:100%;"> </div>
         </div>
       </div>
 
@@ -210,7 +239,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./Carousel Template for Bootstrap_files/jquery.min.js.download"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <!--script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script-->
     <script src="./Carousel Template for Bootstrap_files/bootstrap.min.js.download"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="./Carousel Template for Bootstrap_files/holder.min.js.download"></script>
