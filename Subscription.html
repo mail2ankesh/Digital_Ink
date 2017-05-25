@@ -52,7 +52,7 @@
                             <li ><a href="Home.html">Home</a></li>
                             <li><a href="https://www.chase.com/">About</a></li>
                             <li><a href="https://www.chase.com/digital/resources/customer-service">Contact</a></li>
-                            <li class="active"><a href="Subscription.html">Registration</a></li>
+                            <li class="active"><a href="/Subscription">Registration</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,47 +68,52 @@
         </div>
         <script src="js/angular.js"></script>
         <script src="js/angular-route.js"></script>
-        <script src="js/angular-animate.js"></script>
-       
+        <script src="js/angular-animate.js"></script>      
 
+       <!-- <script src="App/App.js"></script>
+        <script src="App/controller/RegistrationController.js"></script>
+        <script src="App/controller/ThankYouController.js"></script>-->
+        
         <script>
 
-            var app = angular.module('demoApp', ['ngRoute', 'ngAnimate']);
+    var app = angular.module('demoApp', ['ngRoute', 'ngAnimate']);
 
-            app.config(function ($routeProvider) {
-                $routeProvider.when('/',
-                    {
-                        controller: 'RegistrationController',
-                        templateUrl: 'app/Registration.html'
-                    })
-                .when('/ThankYou/:firstname',
-                {
-                    controller: 'ThankYouController',
-                    templateUrl: 'app/ThankYou.html'
-                })
-            });
+    app.config(function ($routeProvider) {
+        $routeProvider.when('/',
+            {
+                controller: 'RegistrationController',
+                templateUrl: 'app/views/Registration.html'
+            })
+        .when('/ThankYou/:firstname',
+        {
+            controller: 'ThankYouController',
+            templateUrl: 'app/views/ThankYou.html'
+        })
+    });
 
 
 
-            app.controller('RegistrationController', function ($scope,$window) {
 
-                $scope.firstname = null;
-                $scope.lastname = null;
-                $scope.email = null;
+    app.controller('RegistrationController', function ($scope, $window) {
 
-                $scope.Adduser = function () {
-                    $window.location.href = '/subscription.html#/ThankYou/' + $scope.firstname;
-                }
-            });
+        $scope.firstname = null;
+        $scope.lastname = null;
+        $scope.email = null;
 
-            app.controller("ThankYouController", function ($scope, $routeParams) {
+        $scope.Adduser = function () {
+            $window.location.href = '/subscription.html#/ThankYou/' + $scope.firstname;
+        }
+    });
 
-                $scope.firstname = $routeParams.firstname;
-            });
+    app.controller("ThankYouController", function ($scope, $routeParams) {
+
+        $scope.firstname = $routeParams.firstname;
+    });
 
 
 
         </script>
+       
     </div>
 </body>
 </html>
