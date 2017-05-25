@@ -1,0 +1,45 @@
+﻿
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Registeration form <small>for INK newsletter</small></h1>
+        </div>
+        
+    </div>
+<div class="row">
+    
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form name="registrationForm" novalidate>
+            <div class="form-group">
+                <label for="firstname">First name:</label>
+                <input type="text" class="form-control" ng-model="firstname" name="firstname" id="firstname" required />
+                <span class="errorMessage" ng-show="registrationForm.firstname.$touched && registrationForm.firstname.$invalid">
+                    First name is required
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last name:</label>
+                <input type="text" class="form-control" ng-model="lastname" name="lastname" id="lastname" required />
+                <span class="errorMessage" ng-show="registrationForm.lastname.$touched && registrationForm.lastname.$invalid">
+                    last name is required
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" ng-model="email" placeholder="Enter email" name="email" required>
+                <span class="errorMessage" ng-show="registrationForm.email.$touched && registrationForm.email.$invalid">
+                    Email is required
+                </span>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" ng-disabled="registrationForm.$invalid"
+                        class="btn btn-primary" ng-click="Adduser()">
+                    Register
+                </button>
+            </div>
+           
+        </form>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
