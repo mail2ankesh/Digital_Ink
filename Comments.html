@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <!-- saved from url=(0042)http://getbootstrap.com/examples/carousel/ -->
 <html lang="en">
 <head>
@@ -55,7 +56,7 @@
                                     <div class="media-body">
                                         <div class="well well-lg">
                                             <h4 class="media-heading text-uppercase reviews">{{comment.name}}</h4>
-                                            <p class="media-comment">{{comment.comment}}</p>
+                                            <p class="media-comment">{{comment.comments}}</p>
                                             <p class="media-date reviews">Comment Added on: {{comment.date}}</p>
                                         </div>
                                     </div>
@@ -63,19 +64,33 @@
                             </ul>
                         </div>
                         <div class="tab-pane" id="add-comment">
-                            <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                            <form data-ng-hide="updateStatus" class="form-horizontal" id="commentForm" role="form">
                                 <div class="form-group">
-                                    <label for="email" class="col-sm-2 control-label">Comment</label>
+                                    <label for="comment" class="col-sm-2 control-label">Comment</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                                        <textarea class="form-control" data-ng-model="comment.comments" name="addComment" id="addComment" rows="5"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="name" class="form-control" data-ng-model="comment.name" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Comment</button>
+                                        <button class="btn btn-success btn-circle text-uppercase" data-ng-click="saveComment(comment)" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Comment</button>
                                     </div>
                                 </div>
                             </form>
+                            <div class="statusRow" data-ng-show="updateStatus">
+                                <h3>
+                                    <span class="label label-success">
+                                        <span class="glyphicon glyphicon-thumbs-up icon-white"></span>&nbsp;&nbsp;Comment updated!
+                                    </span>
+                                </h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,12 +103,107 @@
     <script>
         var app = angular.module('commentsApp', ['ngRoute']);
         app.factory('commentsFactory', function () {
-            var comments = [
-                { id: 1, name: "Ted", "date": "26.9.2016", comment: "test1" },
-                { id: 2, name: "Med", "date": "26.12.2016", comment: "test2" },
-                { id: 3, name: "Zed", "date": "26.9.2019", comment: "test3" },
-                { id: 4, name: "Led", "date": "26.9.2017", comment: "test4" },
-            ];
+            var comments = [{
+                "id": 1,
+                "name": "Ogdon",
+                "date": "10/25/2016",
+                "comments": "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."
+            }, {
+                "id": 2,
+                "name": "Creigh",
+                "date": "02/04/2016",
+                "comments": "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus."
+            }, {
+                "id": 3,
+                "name": "Evangelina",
+                "date": "08/18/2016",
+                "comments": "Integer tincidunt ante vel ipsum."
+            }, {
+                "id": 4,
+                "name": "Corbin",
+                "date": "01/21/2017",
+                "comments": "In congue. Etiam justo. Etiam pretium iaculis justo."
+            }, {
+                "id": 5,
+                "name": "Carolann",
+                "date": "07/08/2016",
+                "comments": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque."
+            }, {
+                "id": 6,
+                "name": "Godiva",
+                "date": "01/16/2017",
+                "comments": "Donec quis orci eget orci vehicula condimentum."
+            }, {
+                "id": 7,
+                "name": "Frank",
+                "date": "01/19/2016",
+                "comments": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst."
+            }, {
+                "id": 8,
+                "name": "Stoddard",
+                "date": "10/17/2016",
+                "comments": "Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi."
+            }, {
+                "id": 9,
+                "name": "Pierrette",
+                "date": "06/09/2016",
+                "comments": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla."
+            }, {
+                "id": 10,
+                "name": "Padriac",
+                "date": "12/03/2016",
+                "comments": "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus."
+            }, {
+                "id": 11,
+                "name": "Bradly",
+                "date": "05/20/2016",
+                "comments": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit."
+            }, {
+                "id": 12,
+                "name": "Estel",
+                "date": "12/23/2015",
+                "comments": "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus."
+            }, {
+                "id": 13,
+                "name": "Gordie",
+                "date": "07/18/2016",
+                "comments": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque."
+            }, {
+                "id": 14,
+                "name": "Eldridge",
+                "date": "02/11/2017",
+                "comments": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo."
+            }, {
+                "id": 15,
+                "name": "Jerrilee",
+                "date": "10/26/2016",
+                "comments": "Nunc purus. Phasellus in felis. Donec semper sapien a libero."
+            }, {
+                "id": 16,
+                "name": "Roz",
+                "date": "12/31/2016",
+                "comments": "In quis justo."
+            }, {
+                "id": 17,
+                "name": "Clarine",
+                "date": "02/21/2016",
+                "comments": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo."
+            }, {
+                "id": 18,
+                "name": "Evangelin",
+                "date": "02/25/2016",
+                "comments": "Etiam vel augue. Vestibulum rutrum rutrum neque."
+            }, {
+                "id": 19,
+                "name": "Margery",
+                "date": "06/30/2016",
+                "comments": "Mauris ullamcorper purus sit amet nulla."
+            }, {
+                "id": 20,
+                "name": "Karie",
+                "date": "08/07/2016",
+                "comments": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue."
+            }];
             var factory = {};
             factory.getComments = function () {
                 return comments;
@@ -101,14 +211,24 @@
             return factory;
         });
 
-        app.controller('commentsController', function ($scope, commentsFactory) {
+        app.controller('commentsController', function ($scope, $filter, commentsFactory) {
             $scope.comments = null;
+            $scope.updateStatus = false;
 
             function init() {
                 $scope.comments = commentsFactory.getComments();
             }
 
             init();
+
+            $scope.saveComment = function (comment) {
+                var todayTime = new Date();
+                comment.date = $filter('date')(todayTime, "mm/dd/yyyy");
+
+                $scope.comments.push(comment);
+                $scope.updateStatus = true;
+            }
+
         });
 
 
